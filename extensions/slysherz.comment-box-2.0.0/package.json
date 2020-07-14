@@ -1,0 +1,254 @@
+{
+	"name": "comment-box",
+	"displayName": "Comment Box",
+	"description": "Transform text into a configurable comment box",
+	"icon": "images/comment-box-logo.png",
+	"version": "2.0.0",
+	"publisher": "SlySherZ",
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/SlySherZ/vscode-comment-box"
+	},
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onCommand:extension.commentBox",
+		"onCommand:commentBox.transformUsingStyle"
+	],
+	"main": "./src/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.commentBox",
+				"title": "Transform to Comment Box"
+			},
+			{
+				"command": "commentBox.transformUsingStyle",
+				"title": "Transform to Comment Box using style"
+			}
+		],
+		"configuration": {
+			"title": "Comment Box",
+			"properties": {
+				"commentBox.styles": {
+					"type": "object",
+					"default": {
+						"defaultStyle": {}
+					},
+					"additionalProperties": {
+						"type": "object",
+						"properties": {
+							"capitalize": {
+								"type": "boolean",
+								"default": true,
+								"description": "Capitalizes the text inside the box."
+							},
+							"textAlignment": {
+								"type": "string",
+								"enum": [
+									"center",
+									"left"
+								],
+								"default": "center",
+								"description": "Controls how the text should be aligned. Can be: \n- \"center\" or \n- \"left\"."
+							},
+							"boxWidth": {
+								"type": "number",
+								"default": 0,
+								"description": "The width of the comment box. When set to 0, it will automatically pick the smallest possible value."
+							},
+							"extendSelection": {
+								"type": "boolean",
+								"default": true,
+								"description": "When 'true' the whole line is replaced, not just the selected part."
+							},
+							"commentStartToken": {
+								"type": "string",
+								"default": "/*",
+								"description": "Characters that start a multi-line comment for your current language. This also defines the top left corner of the box."
+							},
+							"commentEndToken": {
+								"type": "string",
+								"default": "**/",
+								"description": "Characters that end a multi-line comment for your current language. This also defines the bottom right corner of the box."
+							},
+							"topRightToken": {
+								"type": "string",
+								"default": "**",
+								"description": "Characters that are used to draw the top right corner of the box."
+							},
+							"bottomLeftToken": {
+								"type": "string",
+								"default": " **",
+								"description": "Characters that are used to draw the bottom left corner of the box."
+							},
+							"topEdgeToken": {
+								"type": "string",
+								"default": "*",
+								"description": "Characters that are used to draw top edge of the box. The entire top edge is skipped when this is set to an empty string."
+							},
+							"bottomEdgeToken": {
+								"type": "string",
+								"default": "*",
+								"description": "Characters that are used to draw bottom edge of the box. The entire bottom edge is skipped when this is set to an empty string."
+							},
+							"leftEdgeToken": {
+								"type": "string",
+								"default": " * ",
+								"description": "Characters that are used to draw the left edge of the box."
+							},
+							"rightEdgeToken": {
+								"type": "string",
+								"default": " *",
+								"description": "Characters that are used to draw the right edge of the box."
+							},
+							"fillingToken": {
+								"type": "string",
+								"default": " ",
+								"description": "Characters that are used to fill the space between the text and the edges."
+							},
+							"removeEmptyLines": {
+								"type": "boolean",
+								"default": true,
+								"description": "When set to 'true', skips drawing lines that are empty."
+							},
+							"ignoreOuterIndentation": {
+								"type": "boolean",
+								"default": true,
+								"description": "When set to 'false', the box is placed in a way that matches the indentation of the text being commented. Works best when 'extendSelection' is enabled."
+							},
+							"ignoreInnerIndentation": {
+								"type": "boolean",
+								"default": true,
+								"description": "When set to 'false', the text inside the box will keep the same relative indentation between the lines. Requires 'commentBox.textAlignment' to be set to 'left'."
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"commentBox.capitalize": {
+					"type": "boolean",
+					"default": true,
+					"description": "Capitalizes the text inside the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"capitalize\": ...\n    }\n}"
+				},
+				"commentBox.textAlignment": {
+					"type": "string",
+					"enum": [
+						"center",
+						"left"
+					],
+					"default": "center",
+					"description": "Controls how the text should be aligned. Can be: \n- \"center\" or \n- \"left\".",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"textAlignment\": ...\n    }\n}"
+				},
+				"commentBox.boxWidth": {
+					"type": "number",
+					"default": 0,
+					"description": "The width of the comment box. When set to 0, it will automatically pick the smallest possible value.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"boxWidth\": ...\n    }\n}"
+				},
+				"commentBox.extendSelection": {
+					"type": "boolean",
+					"default": true,
+					"description": "When 'true' the whole line is replaced, not just the selected part.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"extendSelection\": ...\n    }\n}"
+				},
+				"commentBox.commentStartToken": {
+					"type": "string",
+					"default": "/*",
+					"description": "Characters that start a multi-line comment for your current language. This also defines the top left corner of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"commentStartToken\": ...\n    }\n}"
+				},
+				"commentBox.commentEndToken": {
+					"type": "string",
+					"default": "**/",
+					"description": "Characters that end a multi-line comment for your current language. This also defines the bottom right corner of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"commentEndToken\": ...\n    }\n}"
+				},
+				"commentBox.topRightToken": {
+					"type": "string",
+					"default": "**",
+					"description": "Characters that are used to draw the top right corner of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"topRightToken\": ...\n    }\n}"
+				},
+				"commentBox.bottomLeftToken": {
+					"type": "string",
+					"default": " **",
+					"description": "Characters that are used to draw the bottom left corner of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"bottomLeftToken\": ...\n    }\n}"
+				},
+				"commentBox.topEdgeToken": {
+					"type": "string",
+					"default": "*",
+					"description": "Characters that are used to draw top edge of the box. The entire top edge is skipped when this is set to an empty string.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"topEdgeToken\": ...\n    }\n}"
+				},
+				"commentBox.bottomEdgeToken": {
+					"type": "string",
+					"default": "*",
+					"description": "Characters that are used to draw bottom edge of the box. The entire bottom edge is skipped when this is set to an empty string.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"bottomEdgeToken\": ...\n    }\n}"
+				},
+				"commentBox.leftEdgeToken": {
+					"type": "string",
+					"default": " * ",
+					"description": "Characters that are used to draw the left edge of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"leftEdgeToken\": ...\n    }\n}"
+				},
+				"commentBox.rightEdgeToken": {
+					"type": "string",
+					"default": " *",
+					"description": "Characters that are used to draw the right edge of the box.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"rightEdgeToken\": ...\n    }\n}"
+				},
+				"commentBox.fillingToken": {
+					"type": "string",
+					"default": " ",
+					"description": "Characters that are used to fill the space between the text and the edges.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"fillingToken\": ...\n    }\n}"
+				},
+				"commentBox.removeEmptyLines": {
+					"type": "boolean",
+					"default": true,
+					"description": "When set to 'true', skips drawing lines that are empty.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"removeEmptyLines\": ...\n    }\n}"
+				},
+				"commentBox.ignoreOuterIndentation": {
+					"type": "boolean",
+					"default": true,
+					"description": "When set to 'false', the box is placed in a way that matches the indentation of the text being commented. Works best when 'extendSelection' is enabled.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"ignoreOuterIndentation\": ...\n    }\n}"
+				},
+				"commentBox.ignoreInnerIndentation": {
+					"type": "boolean",
+					"default": true,
+					"description": "When set to 'false', the text inside the box will keep the same relative indentation between the lines. Requires 'commentBox.textAlignment' to be set to 'left'.",
+					"deprecationMessage": "This works for now but it might be removed in the future. Please use instead:\n\"commentBox.styles\": {\n    \"defaultStyle\": {\n        \"ignoreInnerIndentation\": ...\n    }\n}"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^12.0.2",
+		"eslint": "^5.16.0",
+		"mocha": "^6.1.4",
+		"typescript": "^3.4.5",
+		"vscode": "^1.1.33"
+	},
+	"dependencies": {},
+	"__metadata": {
+		"id": "336ed2c7-b1f4-4d0e-95b0-962a66edd1cd",
+		"publisherId": "e1c9e681-e432-4fb6-8eb8-061f6ac175a6",
+		"publisherDisplayName": "SlySherZ"
+	}
+}

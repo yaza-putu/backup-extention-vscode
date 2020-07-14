@@ -1,0 +1,234 @@
+{
+  "afterAll": {
+    "prefix": "aa",
+    "body": "\nafterAll(function() {\n\t$1\n});\n\t"
+  },
+  "afterEach": {
+    "prefix": "ae",
+    "body": "\nafterEach(function() {\n\t$1\n});\n\t"
+  },
+  "beforeAll": {
+    "prefix": "ba",
+    "body": "\nbeforeAll(function() {\n\t$1\n});\n\t"
+  },
+  "beforeEach": {
+    "prefix": "be",
+    "body": "\nbeforeEach(function() {\n\t$1\n});\n\t"
+  },
+  "callsAll": {
+    "prefix": "sca",
+    "body": "${1:spy}.calls.all()\n\t"
+  },
+  "callsAllArgs": {
+    "prefix": "scaa",
+    "body": "${1:spy}.calls.allArgs()\n\t"
+  },
+  "callsAny": {
+    "prefix": "scan",
+    "body": "${1:spy}.calls.any()\n\t"
+  },
+  "callsArgsFor": {
+    "prefix": "scaf",
+    "body": "${1:spy}.calls.argsFor(${2:call number})\n\t"
+  },
+  "callsCount": {
+    "prefix": "scc",
+    "body": "${1:spy}.calls.count()\n\t"
+  },
+  "callsFirst": {
+    "prefix": "scf",
+    "body": "${1:spy}.calls.first()\n\t"
+  },
+  "callsMostRecent": {
+    "prefix": "scmr",
+    "body": "${1:spy}.calls.mostRecent()\n\t"
+  },
+  "callsReset": {
+    "prefix": "scr",
+    "body": "${1:spy}.calls.reset()\n\t"
+  },
+  "createSpy": {
+    "prefix": "cs",
+    "body": "jasmine.createSpy('${1:name}');$0"
+  },
+  "createSpyObject": {
+    "prefix": "cso",
+    "body": "jasmine.createSpyObj('${1:spy name}', ['${2:method name}'$3]);$0"
+  },
+  "describe": {
+    "prefix": "desc",
+    "body": "\ndescribe('${1:Name of the group}', function() {\n\t$2\n});\n\t"
+  },
+  "expect": {
+    "prefix": "exp",
+    "body": "expect($1)$0"
+  },
+  "focusDescribe": {
+    "prefix": "fdesc",
+    "body": "\nfdescribe('${1:Name of the group}', function() {\n\t$2\n});\n\t"
+  },
+  "focusedIt": {
+    "prefix": "fit",
+    "body": "\nfit('${1}', function() {\n\t$2\n});\n"
+  },
+  "it": {
+    "prefix": "it",
+    "body": "\nit('$1', function() {\n\t$2\n});\n\t"
+  },
+  "any": {
+    "prefix": "any",
+    "body": "jasmine.any($1)$0"
+  },
+  "objectContaining": {
+    "prefix": "oc",
+    "body": "jasmine.objectContaining({'${1:key}': ${2:value}\\})$0"
+  },
+  "notToBe": {
+    "prefix": "nb",
+    "body": "expect($1).not.toBe($2);$0\n\t"
+  },
+  "notToBleCloseTo": {
+    "prefix": "nbct",
+    "body": "expect($1).not.toBeCloseTo(${2:number}, ${3:delta});$0\n\t"
+  },
+  "notToBeDefined": {
+    "prefix": "nbd",
+    "body": "expect($1).not.toBeDefined();$0\n\t"
+  },
+  "notToBeFalsy": {
+    "prefix": "nbf",
+    "body": "expect($1).not.toBeFalsy();$0\n\t"
+  },
+  "notToBeGreaterThan": {
+    "prefix": "nbgt",
+    "body": "expect($1).not.toBeGreaterThan($2);$0\n\t"
+  },
+  "notToBeLessThan": {
+    "prefix": "nblt",
+    "body": "expect($1).not.toBeLessThan($2);$0\n\t"
+  },
+  "notToBeNull": {
+    "prefix": "nbn",
+    "body": "expect($1).not.toBeNull();$0\n\t"
+  },
+  "notToBeTruthy": {
+    "prefix": "nbt",
+    "body": "expect($1).not.toBeTruthy();$0\n\t"
+  },
+  "notToBeUndefined": {
+    "prefix": "nbu",
+    "body": "expect($1).not.toBeUndefined();$0\n\t"
+  },
+  "notToContain": {
+    "prefix": "nc",
+    "body": "expect(${1:array}).not.toContain(${2:item});$0\n\t"
+  },
+  "notToEqual": {
+    "prefix": "ne",
+    "body": "expect($1).not.toEqual($2);$0\n\t"
+  },
+  "notToMatch": {
+    "prefix": "nm",
+    "body": "expect($1).not.toMatch($2);$0\n\t"
+  },
+  "notToThrow": {
+    "prefix": "nt",
+    "body": "expect($1).not.toThrow();$0\n\t"
+  },
+  "spyOn": {
+    "prefix": "so",
+    "body": "spyOn(${1:object}, '${2:method}')$3;"
+  },
+  "spyOnAndCallFake": {
+    "prefix": "socf",
+    "body": "spyOn(${1:object}, '${2:method}').and.callFake(function() {\n$4\n\\});$0"
+  },
+  "spyOnAndCallThrough": {
+    "prefix": "soct",
+    "body": "spyOn(${1:object}, '${2:method}').and.callThrough();$0"
+  },
+  "spyOnAndReturnValue": {
+    "prefix": "sorv",
+    "body": "spyOn(${1:object}, '${2:method}').and.returnValue('${3:value}');$0"
+  },
+  "spyOnAndStub": {
+    "prefix": "sos",
+    "body": "spyOn(${1:object}, '${2:method}').and.stub();$0"
+  },
+  "spyOnAndThrowError": {
+    "prefix": "sote",
+    "body": "spyOn(${1:object}, '${2:method}').and.throwError('${3:error}');$0"
+  },
+  "toBe": {
+    "prefix": "tb",
+    "body": "expect($1).toBe($2);$0\n\t"
+  },
+  "toBeCloseTo": {
+    "prefix": "tbct",
+    "body": "expect($1).toBeCloseTo(${2:number}, ${3:delta});$0\n\t"
+  },
+  "toBeDefined": {
+    "prefix": "tbd",
+    "body": "expect($1).toBeDefined();$0\n\t"
+  },
+  "toBeFalsy": {
+    "prefix": "tbf",
+    "body": "expect($1).toBeFalsy();$0\n\t"
+  },
+  "toBeGreaterThan": {
+    "prefix": "tbgt",
+    "body": "expect($1).toBeGreaterThan($2);$0\n\t"
+  },
+  "toBeLessThan": {
+    "prefix": "tblt",
+    "body": "expect($1).toBeLessThan($2);$0\n\t"
+  },
+  "toBeNull": {
+    "prefix": "tbn",
+    "body": "expect($1).toBeNull();$0\n\t"
+  },
+  "toBeTruthy": {
+    "prefix": "tbt",
+    "body": "expect($1).toBeTruthy();$0\n\t"
+  },
+  "toBeUndefined": {
+    "prefix": "tbu",
+    "body": "expect($1).toBeUndefined();$0\n\t"
+  },
+  "toContain": {
+    "prefix": "tc",
+    "body": "expect(${1:array}).toContain(${2:item});$0\n\t"
+  },
+  "toEqual": {
+    "prefix": "te",
+    "body": "expect($1).toEqual($2);$0\n\t"
+  },
+  "toHaveBeenCalled": {
+    "prefix": "thbc",
+    "body": "expect($1).toHaveBeenCalled();$0\n\t"
+  },
+  "toHaveBeenCalledWith": {
+    "prefix": "thbcw",
+    "body": "expect($1).toHaveBeenCalledWith(${2:params});$0\n\t"
+  },
+  "toMatch": {
+    "prefix": "tm",
+    "body": "expect($1).toMatch($2);$0\n\t"
+  },
+  "toThrow": {
+    "prefix": "tt",
+    "body": "expect($1).toThrow();$0\n\t"
+  },
+  "toThrowError": {
+    "prefix": "tte",
+    "body": "expect($1).toThrowError(${2:error});$0"
+  },
+  "xDescribe": {
+    "prefix": "xdesc",
+    "body": "\nxdescribe('${1:Name of the group}', function() {\n\t$2\n});\n\t"
+  },
+  "xIt": {
+    "prefix": "xit",
+    "body": "\nxit('${1}', function() {\n\t$2\n});\n\t"
+  }
+}
